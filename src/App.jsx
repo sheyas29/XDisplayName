@@ -1,10 +1,6 @@
 import { useRef, useState } from 'react';
 import './App.css';
 
-function blockSpecialChars(e) {
-  e.target.value = e.target.value.replace(/[^a-zA-Z]/g, '');
-}
-
 function App() {
   const firstNameRef = useRef();
   const lastNameRef = useRef();
@@ -21,25 +17,15 @@ function App() {
       <form onSubmit={submitHandler}>
         <label htmlFor="firstName">
           First Name:
-          <input
-            required
-            name="firstName"
-            ref={firstNameRef}
-            onChange={blockSpecialChars}
-          />
+          <input type="text" required name="firstName" ref={firstNameRef} />
         </label>
         <label htmlFor="lastName">
           Last Name:
-          <input
-            required
-            name="lastName"
-            ref={lastNameRef}
-            onChange={blockSpecialChars}
-          />
+          <input type="text" required name="lastName" ref={lastNameRef} />
         </label>
         <button type="submit">Submit</button>
       </form>
-      <h2>Full Name: {fullName}</h2>
+      {fullName && <h2>Full Name: {fullName}</h2>}
     </>
   );
 }
